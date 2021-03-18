@@ -1,0 +1,13 @@
+{
+    "name": "Engine",
+    "alias": "engine",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "HishabKitab\\Engine\\Providers\\EngineServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
