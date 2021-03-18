@@ -17,7 +17,12 @@
     },
     "autoload": {
         "psr-4": {
-            "HishabKitab\\Engine\\": "src/"
+            "HishabKitab\\Engine\\": "src/",
+            "HishabKitab\\Engine\\Database\\Factories\\": "database/factories/",
+            "HishabKitab\\Engine\\Database\\Seeders\\": "database/seeders/"
         }
+    },
+    "require": {
+        "santigarcor/laratrust": "^6.3"
     }
 }

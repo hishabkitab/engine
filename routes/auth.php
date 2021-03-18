@@ -10,6 +10,8 @@ use HishabKitab\Engine\Http\Controllers\Auth\RegisteredUserController;
 use HishabKitab\Engine\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
+/*************************************************** Authentication ***************************************************/
+
 Route::get('/register', [RegisteredUserController::class, 'create'])
                 ->middleware('guest')
                 ->name('register');
@@ -62,3 +64,13 @@ Route::post('/confirm-password', [ConfirmablePasswordController::class, 'store']
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->middleware('auth')
                 ->name('logout');
+
+/*************************************************** Authorization ****************************************************/
+
+Route::resource('/permissions', 'PermissionsController', ['as' => 'laratrust'])
+    ->only(['index', 'edit', 'update']);
+
+Route::resource('/roles', 'RolesController', ['as' => 'laratrust']);
+
+Route::resource('/roles-assignment', 'RolesAssignmentController', ['as' => 'laratrust'])
+    ->only(['index', 'edit', 'update']);
