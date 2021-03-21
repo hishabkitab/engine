@@ -12,7 +12,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $moduleNamespace = 'HishabKitab\Engine\src\Http\Controllers';
+    protected $moduleNamespace = 'HishabKitab\Engine\Http\Controllers';
 
     /**
      * Called before routes are registered.
@@ -36,6 +36,8 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
+
+        $this->mapAuthRoutes();
     }
 
     /**
@@ -65,5 +67,18 @@ class RouteServiceProvider extends ServiceProvider
             ->middleware('api')
             ->namespace($this->moduleNamespace)
             ->group(module_path('Engine', '/routes/api.php'));
+    }
+
+    /**
+     * Define the "auth" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapAuthRoutes()
+    {
+        Route::namespace($this->moduleNamespace)
+            ->group(module_path('Engine', '/routes/auth.php'));
     }
 }
