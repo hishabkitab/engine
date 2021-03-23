@@ -22,7 +22,7 @@ class RolesController
 
     public function index()
     {
-        return View::make('engine::roles.index', [
+        return View::make('view::roles.index', [
             'roles' => $this->rolesModel::withCount('permissions')
                 ->simplePaginate(10),
         ]);
@@ -30,7 +30,7 @@ class RolesController
 
     public function create()
     {
-        return View::make('engine::edit', [
+        return View::make('view::edit', [
             'model' => null,
             'permissions' => $this->permissionModel::all(['id', 'name']),
             'type' => 'role',
@@ -43,7 +43,7 @@ class RolesController
             ->with('permissions:id,name,display_name')
             ->findOrFail($id);
 
-        return View::make('engine::roles.show', ['role' => $role]);
+        return View::make('view::roles.show', ['role' => $role]);
     }
 
     public function store(Request $request)
@@ -81,7 +81,7 @@ class RolesController
                 return $permission;
             });
 
-        return View::make('engine::edit', [
+        return View::make('view::edit', [
             'model' => $role,
             'permissions' => $permissions,
             'type' => 'role',

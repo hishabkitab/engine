@@ -14,7 +14,7 @@ class EngineController extends Controller
      */
     public function index()
     {
-        return view('engine::index');
+        return view('view::index');
     }
 
     /**
@@ -23,7 +23,7 @@ class EngineController extends Controller
      */
     public function create()
     {
-        return view('engine::create');
+        return view('view::create');
     }
 
     /**
@@ -43,7 +43,7 @@ class EngineController extends Controller
      */
     public function show($id)
     {
-        return view('engine::show');
+        return view('view::show');
     }
 
     /**
@@ -53,7 +53,7 @@ class EngineController extends Controller
      */
     public function edit($id)
     {
-        return view('engine::edit');
+        return view('view::edit');
     }
 
     /**

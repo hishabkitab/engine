@@ -31,7 +31,7 @@ class RolesAssignmentController
             abort(404);
         }
 
-        return View::make('engine::roles-assignment.index', [
+        return view('view::engine.roles-assignment.index', [
             'models' => $modelsKeys,
             'modelKey' => $modelKey,
             'users' => $userModel::query()
@@ -76,7 +76,7 @@ class RolesAssignmentController
         }
 
 
-        return View::make('engine::roles-assignment.edit', [
+        return View::make('view::roles-assignment.edit', [
             'modelKey' => $modelKey,
             'roles' => $roles,
             'permissions' => $this->assignPermissions ? $permissions : null,

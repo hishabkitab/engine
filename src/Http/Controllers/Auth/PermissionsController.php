@@ -18,7 +18,7 @@ class PermissionsController
 
     public function index()
     {
-        return View::make('engine::permissions.index', [
+        return view('view::engine.permissions.index', [
             'permissions' => $this->permissionModel::simplePaginate(10),
         ]);
     }
@@ -27,7 +27,7 @@ class PermissionsController
     {
         $permission = $this->permissionModel::findOrFail($id);
 
-        return View::make('engine::edit', [
+        return view('view::engine.permission.edit', [
             'model' => $permission,
             'type' => 'permission',
         ]);

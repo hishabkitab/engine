@@ -3,6 +3,8 @@
 namespace HishabKitab\Engine\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
@@ -13,11 +15,11 @@ class PasswordResetLinkController extends Controller
     /**
      * Display the password reset link request view.
      *
-     * @return View
+     * @return Application|Factory|View
      */
     public function create()
     {
-        return view('engine::auth.forgot-password');
+        return view('view::engine.auth.forgot-password');
     }
 
     /**

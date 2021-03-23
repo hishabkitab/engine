@@ -19,7 +19,7 @@ class ConfirmablePasswordController extends Controller
      */
     public function show(Request $request)
     {
-        return view('engine::auth.confirm-password');
+        return view('view::engine.auth.confirm-password');
     }
 
     /**

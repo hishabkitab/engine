@@ -3,8 +3,8 @@
 namespace HishabKitab\Engine\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use HishabKitab\Engine\Models\Auth\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -23,7 +23,7 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('engine::auth.register');
+        return view('view::engine.auth.register');
     }
 
     /**
