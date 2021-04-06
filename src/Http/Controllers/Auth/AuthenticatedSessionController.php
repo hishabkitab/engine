@@ -22,7 +22,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-        return view('view::engine.auth.login');
+        return view('engine::auth.login');
     }
 
     /**

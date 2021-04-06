@@ -50,9 +50,22 @@ class EngineServiceProvider extends ServiceProvider
         $this->publishes([
             module_path($this->moduleName, 'config/config.php') => config_path($this->moduleNameLower . '.php'),
         ], 'config');
+
+        //Engine
         $this->mergeConfigFrom(
             module_path($this->moduleName, 'config/config.php'), $this->moduleNameLower
         );
+
+        //Laravel Breeze
+        $this->mergeConfigFrom(
+            module_path($this->moduleName, 'config/auth.php'), 'auth'
+        );
+
+        //Laravel Laratrust
+        $this->mergeConfigFrom(
+            module_path($this->moduleName, 'config/laratrust.php'), 'laratrust'
+        );
+
     }
 
     /**

@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 /*************************************************** Authentication ***************************************************/
 
-Route::prefix('authentication')
+Route::prefix('authentication')->middleware('web')
     ->group(function () {
         Route::get('register', [RegisteredUserController::class, 'create'])
             ->middleware('guest')
@@ -25,7 +25,7 @@ Route::prefix('authentication')
             ->middleware('guest');
 
         Route::get('login', [AuthenticatedSessionController::class, 'create'])
-            ->middleware('guest')
+            ->middleware(['guest'])
             ->name('login');
 
         Route::post('login', [AuthenticatedSessionController::class, 'store'])
@@ -73,7 +73,7 @@ Route::prefix('authentication')
 
 /*************************************************** Authorization ****************************************************/
 
-Route::prefix('authorization')
+Route::prefix('authorization')->middleware('web')
     ->group(function () {
         Route::resource('permissions', PermissionsController::class)
             ->only(['index', 'edit', 'update']);

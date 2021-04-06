@@ -1,9 +1,17 @@
 <?php
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
 class LaratrustSetupTeams extends Migration
 {
+    /**
+     * The database connection that should be used by the migration.
+     *
+     * @var string
+     */
+    protected $connection = 'hk_engine';
+
     /**
      * Run the migrations.
      *
@@ -39,7 +47,7 @@ class LaratrustSetupTeams extends Migration
         });
 
         Schema::table('permission_user', function (Blueprint $table) {
-           // Drop permission foreign key and primary key
+            // Drop permission foreign key and primary key
             $table->dropForeign(['permission_id']);
             $table->dropPrimary(['permission_id', 'user_id', 'user_type']);
 

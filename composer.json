@@ -17,10 +17,22 @@
         "psr-4": {
             "HishabKitab\\Engine\\": "src/",
             "HishabKitab\\Engine\\Database\\Factories\\": "database/factories/",
-            "HishabKitab\\Engine\\Database\\Seeders\\": "database/seeders/"
+            "HishabKitab\\Engine\\Database\\Seeders\\": "database/seeders/",
+            "HishabKitab\\Engine\\Database\\Migrations\\": "database/migrations/"
+
         }
     },
     "require": {
         "santigarcor/laratrust": "^6.3"
-    }
+    },
+    "require-dev": {
+        "laravel/sail": "^1.0.1"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

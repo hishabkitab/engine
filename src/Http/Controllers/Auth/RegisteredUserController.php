@@ -4,6 +4,7 @@ namespace HishabKitab\Engine\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use HishabKitab\Engine\Http\Requests\Auth\RegisterRequest;
 use HishabKitab\Engine\Models\Auth\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Foundation\Application;
@@ -23,23 +24,17 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('view::engine.auth.register');
+        return view('engine::auth.register');
     }
 
     /**
      * Handle an incoming registration request.
      *
-     * @param Request $request
+     * @param RegisterRequest $request
      * @return RedirectResponse
-     *
      */
-    public function store(Request $request)
+    public function store(RegisterRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|confirmed|min:8',
-        ]);
 
         Auth::login($user = User::create([
             'name' => $request->name,
