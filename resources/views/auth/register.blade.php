@@ -1,57 +1,101 @@
-@extends('view::layouts.web.site.master')
+@extends('view::layouts.engine')
+
+@section('title', 'Login')
+
+@push('style')
+
+@endpush
+
 
 @push('css')
-    {!!  Html::style('css/pages/auth.css') !!}
+
 @endpush
 
 @section('content')
-    <div class="content content-fixed content-auth">
-        <div class="container">
-            <div class="media align-items-stretch justify-content-center ht-100p">
-                <div class="sign-wrapper mg-lg-r-50 mg-xl-r-60">
-                    <div class="pd-t-20 wd-100p">
-                        <h4 class="tx-color-01 mg-b-5">Create New Account</h4>
-                        <p class="tx-color-03 tx-16 mg-b-40">It's free to signup and only takes a minute.</p>
+    <div class="col-lg-6 d-none d-lg-flex flex-column align-items-center justify-content-center bg-light">
+        <img class="img-fluid position-relative u-z-index-3 mx-5" src="{{ asset('/assets/svg/mockups/mockup.svg') }}"
+             alt="Image description">
 
-                        {!! Form::open(['route' => 'register', 'autocomplete' => 'off', 'spellcheck' => false]) !!}
+        <figure class="u-shape u-shape--top-right u-shape--position-5">
+            <img src="{{ asset('/assets/svg/shapes/shape-1.svg') }}" alt="Image description">
+        </figure>
+        <figure class="u-shape u-shape--center-left u-shape--position-6">
+            <img src="{{ asset('/assets/svg/shapes/shape-2.svg') }}" alt="Image description">
+        </figure>
+        <figure class="u-shape u-shape--center-right u-shape--position-7">
+            <img src="{{ asset('/assets/svg/shapes/shape-3.svg') }}" alt="Image description">
+        </figure>
+        <figure class="u-shape u-shape--bottom-left u-shape--position-8">
+            <img src="{{ asset('/assets/svg/shapes/shape-4.svg') }}" alt="Image description">
+        </figure>
+    </div>
 
-                        {!! Form::nText('name', 'Full Name', null, true, ['placeholder' => 'Your Name']) !!}
+    <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center bg-white mnh-100vh">
+        <a class="u-login-form py-3 mb-auto" href="index.html">
+            <img class="img-fluid" src="{{ asset('/assets/img/logo-app.png') }}" width="160"
+                 alt="Stream Dashboard UI Kit">
+        </a>
 
-                        {!! Form::nEmail('email', 'Email Address', null, true, ['placeholder' => 'yourname@yourmail.com']) !!}
+        <div class="u-login-form">
+            <div class="mb-3">
+                <h1 class="h2">Claim Your Free account!</h1>
+                <p class="small">Login to your dashboard with your registered email address and password.</p>
+            </div>
+            {!! Form::open(['route' => 'register', 'autocomplete' => 'off', 'spellcheck' => false, 'class' => 'mb-3']) !!}
 
-                        {!! Form::nPassword('password', 'Password', true, ['placeholder' => 'Enter your password']) !!}
+            <div class="mb-4">
+                {!! Form::nText('name', 'Full Name', null, true, ['placeholder' => 'Your Name']) !!}
+            </div>
+            <div class="mb-4">
+                {!! Form::nEmail('email', 'Email Address', null, false, ['placeholder' => 'example@yourmail.com']) !!}
+            </div>
 
-                        {!! Form::nPassword('password_confirmation', 'Confirm Password', true, ['placeholder' => 'Retype your password']) !!}
+            <div class="mb-4">
+                {!! Form::nSelect('country', 'Your Country', [
+									'canada' => 'Canada',
+									'belgium' => 'Belgium',
+									'france' => 'France',
+									'germany' => 'Germany',
+									'usa' => 'USA',
+									'uk' => 'UK',
+									'russian-federation' => 'Russian Federation'
+], null, true, ['placeholder' => 'Select your country']) !!}
+            </div>
 
-                        <div class="form-group">
-                            By clicking <strong>Create an account</strong> below, you agree to our terms of service and
-                            <a href="#termsModal" data-toggle="modal"> privacy statement</a>.
-                        </div>
+            <div class="form-row">
+                <div class="col-md-6">
+                    {!! Form::nPassword('password', 'Password', true, ['placeholder' => 'Enter your password']) !!}
+                </div>
+                <div class="col-md-6">
+                    {!! Form::nPassword('password_confirmation', 'Confirm Password', true, ['placeholder' => 'Retype your password']) !!}
+                </div>
+            </div>
 
-                        {!! Form::button('Create Account', ['class' => 'btn btn-brand-02 btn-block', 'type' => 'submit']) !!}
+            <div class="custom-control custom-checkbox mb-4">
+                <input id="rememberMe" class="custom-control-input" name="rememberMe" type="checkbox">
+                <label class="d-block custom-control-label">I agree with <a href="#termsModal" data-toggle="modal">terms &amp; conditions</a></label>
+            </div>
 
-                        {!! Form::close() !!}
+            {!! Form::button('Register', ['class' => 'btn btn-primary btn-block', 'type' => 'submit']) !!}
 
-                        <div class="divider-text">or</div>
-                        <button class="btn btn-outline-facebook btn-block">Sign Up With Facebook</button>
-                        <button class="btn btn-outline-twitter btn-block">Sign Up With Twitter</button>
-                        <div class="tx-13 mg-t-20 tx-center">Already have an account? <a href="{!! route('login') !!}">Sign In</a></div>
-                    </div>
-                </div><!-- sign-wrapper -->
-                <div class="media-body pd-y-30 pd-lg-x-50 pd-xl-x-60 align-items-center d-none d-lg-flex pos-relative">
-                    <div class="mx-lg-wd-500 mx-xl-wd-550">
-                        <img src="{{ asset('/images/img16.png') }}" class="img-fluid" alt="">
-                    </div>
-                    <div class="pos-absolute b-0 r-0 tx-12">
-                        Social media marketing vector is created by <a href="https://www.freepik.com/pikisuperstar" target="_blank">pikisuperstar (freepik.com)</a>
-                    </div>
-                </div><!-- media-body -->
-            </div><!-- media -->
-        </div><!-- container -->
-    </div><!-- content -->
+            {!! Form::close() !!}
+
+            <p class="small">
+                Already have an account? <a href="{{ route('login') }}">Login here</a>
+            </p>
+        </div>
+
+        <div class="u-login-form text-muted py-3 mt-auto">
+            <small>
+                <i class="far fa-question-circle mr-1"></i>
+                If you are not able to sign in, please <a href="#">contact us</a>.
+            </small>
+        </div>
+    </div>
 
     {{-- Terms Modal --}}
-    <div class="modal fade" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content tx-14">
                 <div class="modal-header">
@@ -70,66 +114,14 @@
             </div>
         </div>
     </div>
+
 @endsection
 
-{{--
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@push('script')
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+@endpush
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+@push('js')
 
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
+@endpush
 
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            </div>
-
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
---}}
