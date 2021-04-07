@@ -1,59 +1,74 @@
-@extends('view::layouts.web.site.master')
+@extends('view::layouts.engine')
+
+@section('title', 'Forgot Password')
+
+@push('style')
+
+@endpush
+
 
 @push('css')
-    {!!  Html::style('css/pages/auth.css') !!}
+
 @endpush
 
 @section('content')
-    <div class="content content-fixed content-auth-alt">
-        <div class="container d-flex justify-content-center ht-100p">
-            <div class="mx-wd-300 wd-sm-450 ht-100p d-flex flex-column align-items-center justify-content-center">
-                <div class="wd-80p wd-sm-300 mg-b-15"><img src="{{ asset('images/img18.png') }}" class="img-fluid" alt=""></div>
-                <h4 class="tx-20 tx-sm-24">Reset your password</h4>
-                <p class="tx-color-03 mg-b-30 tx-center">Enter your username or email address and we will send you a link to reset your password.</p>
-                <div class="wd-100p d-flex flex-column flex-sm-row mg-b-40">
-                    <input type="text" class="form-control wd-sm-250 flex-fill" placeholder="Enter username or email address">
-                    <button class="btn btn-brand-02 mg-sm-l-10 mg-t-10 mg-sm-t-0">Reset Password</button>
-                </div>
-            </div>
-        </div><!-- container -->
-    </div><!-- content -->
-@endsection
-{{--
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+    <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center bg-white mnh-100vh">
+        @include('view::components.engine.app-logo')
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+        <div class="u-login-form">
+            <div class="mb-3">
+                <h1 class="h2">Recover Your Password</h1>
+                <p class="small">
+                    Just let us confirm your email address and we will email you a
+                    password reset link that will allow you to choose a new one.
+                </p>
+            </div>
+            {!! Form::open(['route' => 'password.email', 'autocomplete' => 'off', 'spellcheck' => false, 'class' => 'mb-3']) !!}
+
+            <div class="mb-3">
+                {!! Form::nEmail('email', 'Email Address', null, true, ['placeholder' => 'example@yourmail.com']) !!}
+            </div>
+
+            {!! Form::button('Email Password Reset Link', ['class' => 'btn btn-warning btn-block', 'type' => 'submit']) !!}
+
+            {!! Form::close() !!}
+
+            <p class="small">
+                Don’t have an account? <a href="{{ route('register') }}">Create one now</a>
+            </p>
         </div>
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+        <div class="u-login-form text-muted py-3 mt-auto">
+            <small>
+                <i class="far fa-question-circle mr-1"></i>
+                If you are not able to recover your password, please <a href="{{ route('support') }}">contact us</a>.
+            </small>
+        </div>
+    </div>
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+    <div class="col-lg-6 d-none d-lg-flex flex-column align-items-center justify-content-center bg-light">
+        <img class="img-fluid position-relative u-z-index-3 mx-5" src="{{ asset('/assets/svg/mockups/mockup.svg') }}"
+             alt="Image description">
 
-        <form method="POST" action="{{ route('password.email') }}">
-            @csrf
+        <figure class="u-shape u-shape--top-right u-shape--position-5">
+            <img src="{{ asset('/assets/svg/shapes/shape-1.svg') }}" alt="Image description">
+        </figure>
+        <figure class="u-shape u-shape--center-left u-shape--position-6">
+            <img src="{{ asset('/assets/svg/shapes/shape-2.svg') }}" alt="Image description">
+        </figure>
+        <figure class="u-shape u-shape--center-right u-shape--position-7">
+            <img src="{{ asset('/assets/svg/shapes/shape-3.svg') }}" alt="Image description">
+        </figure>
+        <figure class="u-shape u-shape--bottom-left u-shape--position-8">
+            <img src="{{ asset('/assets/svg/shapes/shape-4.svg') }}" alt="Image description">
+        </figure>
+    </div>
+@endsection
 
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
+@push('script')
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
+@endpush
 
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
---}}
+@push('js')
+
+@endpush

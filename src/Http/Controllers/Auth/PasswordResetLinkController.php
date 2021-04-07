@@ -19,7 +19,7 @@ class PasswordResetLinkController extends Controller
      */
     public function create()
     {
-        return view('view::engine.auth.forgot-password');
+        return view('engine::auth.forgot-password');
     }
 
     /**

@@ -1,63 +1,71 @@
-@extends('view::layouts.web.site.master')
+@extends('view::layouts.engine')
+
+@section('title', 'Forgot Password')
+
+@push('style')
+
+@endpush
+
 
 @push('css')
-    {!!  Html::style('css/pages/auth.css') !!}
+
 @endpush
 
 @section('content')
-    <div class="content content-fixed content-auth-alt">
-        <div class="container ht-100p">
-            <div class="ht-100p d-flex flex-column align-items-center justify-content-center">
-                <div class="wd-150 wd-sm-250 mg-b-30"><img src="https://via.placeholder.com/500x380" class="img-fluid" alt=""></div>
-                <h4 class="tx-20 tx-sm-24">Verify your email address</h4>
-                <p class="tx-color-03 mg-b-40">Please check your email and click the verify button or link to verify your account.</p>
-                <div class="tx-13 tx-lg-14 mg-b-40">
-                    <a href="" class="btn btn-brand-02 d-inline-flex align-items-center">Resend Verification</a>
-                    <a href="" class="btn btn-white d-inline-flex align-items-center mg-l-5">Contact Support</a>
-                </div>
-                <span class="tx-12 tx-color-03">Mailbox with envelope vector is created by <a href="https://www.freepik.com/free-photos-vectors/background">freepik (freepik.com)</a></span>
+    <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center bg-white mnh-100vh">
+        @include('view::components.engine.app-logo')
+
+        <div class="u-login-form">
+            <div class="mb-3">
+                <h1 class="h2">Email Verification</h1>
+                <p class="small">
+                    A new verification link has been sent to the
+                    email address you provided during registration.
+                </p>
             </div>
-        </div><!-- container -->
-    </div><!-- content -->
+            {!! Form::open(['route' => 'verification.send', 'autocomplete' => 'off', 'spellcheck' => false, 'class' => 'mb-3']) !!}
+
+            {!! Form::button('Resend Verification Email', ['class' => 'btn btn-info btn-block', 'type' => 'submit']) !!}
+
+            {!! Form::close() !!}
+
+            <p class="small">
+                Don’t have an account? <a href="{{ route('register') }}">Create one now</a>
+            </p>
+        </div>
+
+        <div class="u-login-form text-muted py-3 mt-auto">
+            <small>
+                <i class="far fa-question-circle mr-1"></i>
+                If you are not able to recover your password, please <a href="{{ route('support') }}">contact us</a>.
+            </small>
+        </div>
+    </div>
+
+    <div class="col-lg-6 d-none d-lg-flex flex-column align-items-center justify-content-center bg-light">
+        <img class="img-fluid position-relative u-z-index-3 mx-5" src="{{ asset('/assets/svg/mockups/mockup.svg') }}"
+             alt="Image description">
+
+        <figure class="u-shape u-shape--top-right u-shape--position-5">
+            <img src="{{ asset('/assets/svg/shapes/shape-1.svg') }}" alt="Image description">
+        </figure>
+        <figure class="u-shape u-shape--center-left u-shape--position-6">
+            <img src="{{ asset('/assets/svg/shapes/shape-2.svg') }}" alt="Image description">
+        </figure>
+        <figure class="u-shape u-shape--center-right u-shape--position-7">
+            <img src="{{ asset('/assets/svg/shapes/shape-3.svg') }}" alt="Image description">
+        </figure>
+        <figure class="u-shape u-shape--bottom-left u-shape--position-8">
+            <img src="{{ asset('/assets/svg/shapes/shape-4.svg') }}" alt="Image description">
+        </figure>
+    </div>
 @endsection
-{{--
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
-        </div>
+@push('script')
 
-        @if (session('status') == 'verification-link-sent')
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ __('A new verification link has been sent to the email address you provided during registration.') }}
-            </div>
-        @endif
+@endpush
 
-        <div class="mt-4 flex items-center justify-between">
-            <form method="POST" action="{{ route('verification.send') }}">
-                @csrf
+@push('js')
 
-                <div>
-                    <x-button>
-                        {{ __('Resend Verification Email') }}
-                    </x-button>
-                </div>
-            </form>
+@endpush
 
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-
-                <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    {{ __('Log out') }}
-                </button>
-            </form>
-        </div>
-    </x-auth-card>
-</x-guest-layout>
---}}

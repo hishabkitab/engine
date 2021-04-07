@@ -31,10 +31,7 @@
     </div>
 
     <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center bg-white mnh-100vh">
-        <a class="u-login-form py-3 mb-auto" href="index.html">
-            <img class="img-fluid" src="{{ asset('/assets/img/logo-app.png') }}" width="160"
-                 alt="Stream Dashboard UI Kit">
-        </a>
+        @include('view::components.engine.app-logo')
 
         <div class="u-login-form">
             <div class="mb-3">
@@ -43,12 +40,12 @@
             </div>
             {!! Form::open(['route' => 'login', 'autocomplete' => 'off', 'spellcheck' => false, 'class' => 'mb-3']) !!}
 
-            <div class="mb-4">
-                {!! Form::nEmail('email', 'Email Address', null, false, ['placeholder' => 'example@yourmail.com']) !!}
+            <div class="mb-3">
+                {!! Form::nEmail('email', 'Email Address', null, true, ['placeholder' => 'example@yourmail.com']) !!}
             </div>
 
-            <div class="mb-4">
-                {!! Form::nPassword('password', 'Password', false, ['placeholder' => 'Enter your password']) !!}
+            <div class="mb-3">
+                {!! Form::nPassword('password', 'Password', true, ['placeholder' => 'Enter your password']) !!}
             </div>
 
             <div class="form-group d-flex justify-content-between align-items-center mb-4">
@@ -60,19 +57,19 @@
                 <a class="link-muted small" href="{{ route('password.request') }}">Forgot Password?</a>
             </div>
 
-            {!! Form::button('Log In', ['class' => 'btn btn-primary btn-block', 'type' => 'submit']) !!}
+            {!! Form::button('Sign In', ['class' => 'btn btn-primary btn-block', 'type' => 'submit']) !!}
 
             {!! Form::close() !!}
 
             <p class="small">
-                Don’t have an account? <a href="{{ route('register') }}">Sign Up here</a>
+                Don’t have an account? <a href="{{ route('register') }}">Create one now!</a>
             </p>
         </div>
 
         <div class="u-login-form text-muted py-3 mt-auto">
             <small>
                 <i class="far fa-question-circle mr-1"></i>
-                If you are not able to sign in, please <a href="#">contact us</a>.
+                If you are not able to sign in, please <a href="{{ route('support') }}">contact us</a>.
             </small>
         </div>
     </div>
