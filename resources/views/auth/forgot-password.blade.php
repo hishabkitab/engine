@@ -1,4 +1,4 @@
-@extends('view::layouts.engine.auth')
+@extends('engine::layouts.auth')
 
 @section('title', 'Forgot Password')
 
@@ -13,7 +13,7 @@
 
 @section('content')
     <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center bg-white mnh-100vh">
-        @include('view::components.engine.app-logo')
+        @include('engine::components.app-logo')
 
         <div class="u-login-form">
             <div class="mb-3">

@@ -1,6 +1,6 @@
 <?php
 
-namespace HishabKitab\Engine\Http\Requests;
+namespace HishabKitab\Engine\Http\Requests\Authentication;
 
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;

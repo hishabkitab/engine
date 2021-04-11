@@ -4,7 +4,7 @@ namespace HishabKitab\Engine\Http\Controllers\Authentication;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use HishabKitab\Engine\Http\Requests\RegisterRequest;
+use HishabKitab\Engine\Http\Requests\Authentication\RegisterRequest;
 use HishabKitab\Engine\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Foundation\Application;
@@ -45,6 +45,6 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect();
     }
 }

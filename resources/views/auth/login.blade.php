@@ -41,7 +41,7 @@
             {!! Form::open(['route' => 'login', 'autocomplete' => 'off', 'spellcheck' => false, 'class' => 'mb-3']) !!}
 
 
-            {!! Form::nEmail('email', 'Email Address', null, true, ['placeholder' => 'example@yourmail.com']) !!}
+            {!! Form::nEmail('email', 'Email Address', null, false, ['placeholder' => 'example@yourmail.com']) !!}
 
             {!! Form::nPassword('password', 'Password', true, ['placeholder' => 'Enter your password']) !!}
 

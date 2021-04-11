@@ -4,7 +4,7 @@ namespace HishabKitab\Engine\Http\Controllers\Authentication;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use HishabKitab\Engine\Http\Requests\LoginRequest;
+use HishabKitab\Engine\Http\Requests\Authentication\LoginRequest;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
