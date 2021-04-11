@@ -68,7 +68,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => HishabKitab\Engine\Models\Auth\User::class,
+            'model' => HishabKitab\Engine\Models\User::class,
         ],
 
         // 'users' => [

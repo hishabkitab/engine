@@ -1,4 +1,4 @@
-@extends('view::layouts.engine')
+@extends('view::layouts.engine.auth')
 
 @section('title', 'Forgot Password')
 
@@ -36,20 +36,20 @@
     </div>
 
     <div class="col-lg-6 d-none d-lg-flex flex-column align-items-center justify-content-center bg-light">
-        <img class="img-fluid position-relative u-z-index-3 mx-5" src="{{ asset('/assets/svg/mockups/mockup.svg') }}"
+        <img class="img-fluid position-relative u-z-index-3 mx-5" src="{{ asset('/svg/mockups/mockup.svg') }}"
              alt="Image description">
 
         <figure class="u-shape u-shape--top-right u-shape--position-5">
-            <img src="{{ asset('/assets/svg/shapes/shape-1.svg') }}" alt="Image description">
+            <img src="{{ asset('/svg/shapes/shape-1.svg') }}" alt="Image description">
         </figure>
         <figure class="u-shape u-shape--center-left u-shape--position-6">
-            <img src="{{ asset('/assets/svg/shapes/shape-2.svg') }}" alt="Image description">
+            <img src="{{ asset('/svg/shapes/shape-2.svg') }}" alt="Image description">
         </figure>
         <figure class="u-shape u-shape--center-right u-shape--position-7">
-            <img src="{{ asset('/assets/svg/shapes/shape-3.svg') }}" alt="Image description">
+            <img src="{{ asset('/svg/shapes/shape-3.svg') }}" alt="Image description">
         </figure>
         <figure class="u-shape u-shape--bottom-left u-shape--position-8">
-            <img src="{{ asset('/assets/svg/shapes/shape-4.svg') }}" alt="Image description">
+            <img src="{{ asset('/svg/shapes/shape-4.svg') }}" alt="Image description">
         </figure>
     </div>
 @endsection

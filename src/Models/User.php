@@ -1,6 +1,6 @@
 <?php
 
-namespace HishabKitab\Engine\Models\Auth;
+namespace HishabKitab\Engine\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
     ];

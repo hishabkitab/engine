@@ -1,10 +1,10 @@
 <?php
 
-namespace HishabKitab\Engine\Http\Controllers\Auth;
+namespace HishabKitab\Engine\Http\Controllers\Authentication;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use HishabKitab\Engine\Http\Requests\Auth\LoginRequest;
+use HishabKitab\Engine\Http\Requests\LoginRequest;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;

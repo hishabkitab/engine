@@ -1,11 +1,11 @@
 <?php
 
-namespace HishabKitab\Engine\Http\Controllers\Auth;
+namespace HishabKitab\Engine\Http\Controllers\Authentication;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use HishabKitab\Engine\Http\Requests\Auth\RegisterRequest;
-use HishabKitab\Engine\Models\Auth\User;
+use HishabKitab\Engine\Http\Requests\RegisterRequest;
+use HishabKitab\Engine\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -38,6 +38,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user = User::create([
             'name' => $request->name,
+            'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]));

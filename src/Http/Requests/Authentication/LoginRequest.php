@@ -1,6 +1,6 @@
 <?php
 
-namespace HishabKitab\Engine\Http\Requests\Auth;
+namespace HishabKitab\Engine\Http\Requests;
 
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
-class RegisterRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,9 +30,8 @@ class RegisterRequest extends FormRequest
     {
 
         return [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|confirmed|min:8',
+            'email' => 'required|string|email',
+            'password' => 'required|string',
         ];
     }
 
@@ -41,7 +40,7 @@ class RegisterRequest extends FormRequest
      *
      * @return void
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function authenticate()
     {
@@ -50,8 +49,9 @@ class RegisterRequest extends FormRequest
         if (! Auth::attempt($this->only('email', 'password'), $this->filled('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
+            notify()->error(__('auth.failed'), 'Authentication Failed');
             throw ValidationException::withMessages([
-                'email' => __('auth.failed'),
+                'auth_failed' => __('auth.failed'),
             ]);
         }
 
@@ -63,7 +63,7 @@ class RegisterRequest extends FormRequest
      *
      * @return void
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function ensureIsNotRateLimited()
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace HishabKitab\Engine\Http\Controllers\Auth;
+namespace HishabKitab\Engine\Http\Controllers\Authorization;
 
 use Laratrust\Helper;
 use Illuminate\Http\Request;

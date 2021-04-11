@@ -1,6 +1,6 @@
 <?php
 
-namespace HishabKitab\Engine\Http\Controllers\Auth;
+namespace HishabKitab\Engine\Http\Controllers\Authentication;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;

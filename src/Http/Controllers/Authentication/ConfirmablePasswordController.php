@@ -1,9 +1,11 @@
 <?php
 
-namespace HishabKitab\Engine\Http\Controllers\Auth;
+namespace HishabKitab\Engine\Http\Controllers\Authentication;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -15,11 +17,11 @@ class ConfirmablePasswordController extends Controller
      * Show the confirm password view.
      *
      * @param Request $request
-     * @return View
+     * @return Application|Factory|View
      */
     public function show(Request $request)
     {
-        return view('view::engine.auth.confirm-password');
+        return view('engine::auth.confirm-password');
     }
 
     /**

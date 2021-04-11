@@ -1,6 +1,6 @@
 <?php
 
-namespace HishabKitab\Engine\Http\Controllers\Auth;
+namespace HishabKitab\Engine\Http\Controllers\Authorization;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;

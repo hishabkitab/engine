@@ -1,4 +1,4 @@
-@extends('view::layouts.engine')
+@extends('view::layouts.engine.auth')
 
 @section('title', 'Create Account')
 
@@ -22,41 +22,28 @@
             </div>
             {!! Form::open(['route' => 'register', 'autocomplete' => 'off', 'spellcheck' => false, 'class' => 'mb-3']) !!}
 
-            <div class="mb-3">
-                {!! Form::nText('name', 'Full Name', null, true, ['placeholder' => 'Your Name']) !!}
-            </div>
-            <div class="mb-3">
-                <div class="form-group">
-                    <label for="username">Domain Address
-                        <span class="font-weight-bold text-danger">*</span>
+            {!! Form::nText('name', 'Full Name', null, true, ['placeholder' => 'Your Name']) !!}
 
-                    </label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white">http://</span>
-                        </div>
-                        <input type="text" class="form-control border-left-0 border-right-0" placeholder="Username"
-                               aria-label="Username" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <span class="input-group-text bg-white" id="basic-addon2">.hishabkitab.com</span>
-                        </div>
+            {!! Form::nEmail('email', 'Email Address', null, true, ['placeholder' => 'example@yourmail.com']) !!}
+
+            <div class="form-group">
+                <label for="username">Domain Address</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white">http://</span>
+                    </div>
+
+                    {!! Form::text('username', null, [
+'class' => 'form-control border-left-0 border-right-0',
+'placeholder' => 'Username',
+'aria-label' => 'Username',
+ 'aria-describedby' => 'basic-addon2',
+ 'required' => 'required']) !!}
+
+                    <div class="input-group-append">
+                        <span class="input-group-text bg-white" id="basic-addon2">.hishabkitab.com</span>
                     </div>
                 </div>
-            </div>
-            <div class="mb-3">
-                {!! Form::nEmail('email', 'Email Address', null, true, ['placeholder' => 'example@yourmail.com']) !!}
-            </div>
-
-            <div class="mb-3">
-                {!! Form::nSelect('country', 'Your Country', [
-									'canada' => 'Canada',
-									'belgium' => 'Belgium',
-									'france' => 'France',
-									'germany' => 'Germany',
-									'usa' => 'USA',
-									'uk' => 'UK',
-									'russian-federation' => 'Russian Federation'
-], null, false, ['placeholder' => 'Select your country']) !!}
             </div>
 
             <div class="form-row">
@@ -70,9 +57,10 @@
 
             <div class="custom-control custom-checkbox mb-4">
                 <input id="rememberMe" class="custom-control-input" name="rememberMe" type="checkbox">
-                <label class="d-block custom-control-label" for="rememberMe">I agree with <a href="#termsModal"
-                                                                                             data-toggle="modal">terms
-                        &amp; conditions</a></label>
+                <label class="d-block custom-control-label" for="rememberMe">
+                    I agree with
+                    <a href="#termsModal" data-toggle="modal">terms &amp; conditions</a>
+                </label>
             </div>
 
             {!! Form::button('Create Account', ['class' => 'btn btn-success btn-block', 'type' => 'submit']) !!}
@@ -93,20 +81,20 @@
     </div>
 
     <div class="col-lg-6 d-none d-lg-flex flex-column align-items-center justify-content-center bg-light">
-        <img class="img-fluid position-relative u-z-index-3 mx-5" src="{{ asset('/assets/svg/mockups/mockup.svg') }}"
+        <img class="img-fluid position-relative u-z-index-3 mx-5" src="{{ asset('/svg/mockups/mockup.svg') }}"
              alt="Image description">
 
         <figure class="u-shape u-shape--top-right u-shape--position-5">
-            <img src="{{ asset('/assets/svg/shapes/shape-1.svg') }}" alt="Image description">
+            <img src="{{ asset('/svg/shapes/shape-1.svg') }}" alt="Image description">
         </figure>
         <figure class="u-shape u-shape--center-left u-shape--position-6">
-            <img src="{{ asset('/assets/svg/shapes/shape-2.svg') }}" alt="Image description">
+            <img src="{{ asset('/svg/shapes/shape-2.svg') }}" alt="Image description">
         </figure>
         <figure class="u-shape u-shape--center-right u-shape--position-7">
-            <img src="{{ asset('/assets/svg/shapes/shape-3.svg') }}" alt="Image description">
+            <img src="{{ asset('/svg/shapes/shape-3.svg') }}" alt="Image description">
         </figure>
         <figure class="u-shape u-shape--bottom-left u-shape--position-8">
-            <img src="{{ asset('/assets/svg/shapes/shape-4.svg') }}" alt="Image description">
+            <img src="{{ asset('/svg/shapes/shape-4.svg') }}" alt="Image description">
         </figure>
     </div>
     {{-- Terms Modal --}}

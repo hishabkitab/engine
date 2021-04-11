@@ -1,16 +1,16 @@
 <?php
 
-use HishabKitab\Engine\Http\Controllers\Auth\AuthenticatedSessionController;
-use HishabKitab\Engine\Http\Controllers\Auth\ConfirmablePasswordController;
-use HishabKitab\Engine\Http\Controllers\Auth\EmailVerificationNotificationController;
-use HishabKitab\Engine\Http\Controllers\Auth\EmailVerificationPromptController;
-use HishabKitab\Engine\Http\Controllers\Auth\NewPasswordController;
-use HishabKitab\Engine\Http\Controllers\Auth\PasswordResetLinkController;
-use HishabKitab\Engine\Http\Controllers\Auth\PermissionsController;
-use HishabKitab\Engine\Http\Controllers\Auth\RegisteredUserController;
-use HishabKitab\Engine\Http\Controllers\Auth\RolesAssignmentController;
-use HishabKitab\Engine\Http\Controllers\Auth\RolesController;
-use HishabKitab\Engine\Http\Controllers\Auth\VerifyEmailController;
+use HishabKitab\Engine\Http\Controllers\Authentication\AuthenticatedSessionController;
+use HishabKitab\Engine\Http\Controllers\Authentication\ConfirmablePasswordController;
+use HishabKitab\Engine\Http\Controllers\Authentication\EmailVerificationNotificationController;
+use HishabKitab\Engine\Http\Controllers\Authentication\EmailVerificationPromptController;
+use HishabKitab\Engine\Http\Controllers\Authentication\NewPasswordController;
+use HishabKitab\Engine\Http\Controllers\Authentication\PasswordResetLinkController;
+use HishabKitab\Engine\Http\Controllers\Authorization\PermissionsController;
+use HishabKitab\Engine\Http\Controllers\Authentication\RegisteredUserController;
+use HishabKitab\Engine\Http\Controllers\Authorization\RolesAssignmentController;
+use HishabKitab\Engine\Http\Controllers\Authorization\RolesController;
+use HishabKitab\Engine\Http\Controllers\Authentication\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 /*************************************************** Authentication ***************************************************/
