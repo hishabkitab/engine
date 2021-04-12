@@ -6,11 +6,13 @@ use HishabKitab\Engine\Http\Controllers\Authentication\EmailVerificationNotifica
 use HishabKitab\Engine\Http\Controllers\Authentication\EmailVerificationPromptController;
 use HishabKitab\Engine\Http\Controllers\Authentication\NewPasswordController;
 use HishabKitab\Engine\Http\Controllers\Authentication\PasswordResetLinkController;
-use HishabKitab\Engine\Http\Controllers\Authorization\PermissionsController;
 use HishabKitab\Engine\Http\Controllers\Authentication\RegisteredUserController;
+use HishabKitab\Engine\Http\Controllers\Authentication\VerifyEmailController;
+use HishabKitab\Engine\Http\Controllers\Authorization\PermissionsController;
 use HishabKitab\Engine\Http\Controllers\Authorization\RolesAssignmentController;
 use HishabKitab\Engine\Http\Controllers\Authorization\RolesController;
-use HishabKitab\Engine\Http\Controllers\Authentication\VerifyEmailController;
+use HishabKitab\Engine\Http\Controllers\Configuration\CompanyController;
+use HishabKitab\Site\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +26,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*************************************************** Entry Point ***************************************************/
 
+Route::get('/', function () {
+    return redirect()->route('site.home');
+});
 
 /*************************************************** Authentication ***************************************************/
 
@@ -96,3 +102,18 @@ Route::prefix('authorization')->middleware('web')
         Route::resource('roles-assignment', RolesAssignmentController::class)
             ->only(['index', 'edit', 'update']);
     });
+
+/*************************************************** Configuration ****************************************************/
+
+Route::prefix('configuration')->middleware(['web', 'auth'])
+    ->group(function () {
+        Route::get('company', [CompanyController::class, 'create'])
+            ->name('config.company');
+
+        Route::post('company', [CompanyController::class, 'store']);
+
+        Route::resource('financial-accounts', CompanyController::class);
+        Route::resource('localizations', CompanyController::class);
+    });
+
+Route::get('/support', [SiteController::class, 'index'])->name('support');
