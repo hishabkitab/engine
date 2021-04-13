@@ -36,7 +36,7 @@
 
         <div class="u-login-form text-muted py-3 mt-auto">
             <small>
-                <i class="far fa-question-circle mr-1"></i>
+                <i class="las la-question-circle mr-1"></i>
                 If you are not able to recover your password, please <a href="{{ route('support') }}">contact us</a>.
             </small>
         </div>

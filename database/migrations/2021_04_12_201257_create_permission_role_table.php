@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserCompanyTable extends Migration
+class CreatePermissionRoleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateUserCompanyTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_company', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('company_id')->constrained('companies');
-            $table->unique(['user_id', 'company_id']);
+        Schema::create('permission_role', function (Blueprint $table) {
+            $table->foreignId('permission_id')->constrained('permissions');
+            $table->foreignId('role_id')->constrained('roles');
             $table->timestamps();
+            $table->primary(['permission_id', 'role_id']);
         });
     }
 
@@ -28,6 +28,6 @@ class CreateUserCompanyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_company');
+        Schema::dropIfExists('permission_role');
     }
 }

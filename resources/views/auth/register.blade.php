@@ -74,7 +74,7 @@
 
         <div class="u-login-form text-muted py-3 mt-auto">
             <small>
-                <i class="far fa-question-circle mr-1"></i>
+                <i class="las la-question-circle mr-1"></i>
                 If you are not able to sign up, please <a href="{{ route('support') }}">contact us</a>.
             </small>
         </div>
@@ -108,7 +108,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body" style=" height: 75vh; overflow-y: auto;">
+                <div class="modal-body" style="height: 75vh; overflow-y: auto;">
                     @include('engine::privacy')
                 </div>
                 <div class="modal-footer">

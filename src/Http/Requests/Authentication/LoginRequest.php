@@ -45,17 +45,19 @@ class LoginRequest extends FormRequest
     public function authenticate()
     {
         $this->ensureIsNotRateLimited();
+        RateLimiter::hit($this->throttleKey());
 
-        if (! Auth::attempt($this->only('email', 'password'), $this->filled('remember'))) {
-            RateLimiter::hit($this->throttleKey());
-
-            notify()->error(__('auth.failed'), 'Authentication Failed');
-            throw ValidationException::withMessages([
-                'auth_failed' => __('auth.failed'),
-            ]);
+        if (Auth::attempt($this->only('email', 'password'), $this->filled('remember'))) {
+            //login success notify
+            notify()->success(__('auth.login.success'), 'Authentication');
         }
 
-        RateLimiter::clear($this->throttleKey());
+        //send login failed message
+        notify()->error(__('auth.login.failed'), 'Authentication');
+
+        throw ValidationException::withMessages([
+            'auth_failed' => __('auth.login.failed'),
+        ]);
     }
 
     /**
@@ -67,7 +69,7 @@ class LoginRequest extends FormRequest
      */
     public function ensureIsNotRateLimited()
     {
-        if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
+        if (!RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             return;
         }
 
@@ -90,6 +92,6 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey()
     {
-        return Str::lower($this->input('email')).'|'.$this->ip();
+        return Str::lower($this->input('email')) . '|' . $this->ip();
     }
 }

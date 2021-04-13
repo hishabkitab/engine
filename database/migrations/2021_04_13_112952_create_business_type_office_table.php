@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBranchesTable extends Migration
+class CreateBusinessTypeOfficeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateBranchesTable extends Migration
      */
     public function up()
     {
-        Schema::create('branches', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('address');
-            $table->string('logo');
-            $table->foreignId('company_id')->constrained('companies');
+        Schema::create('business_type_office', function (Blueprint $table) {
+            $table->foreignId('business_type_id')->constrained('business_types');
+            $table->foreignId('office_id')->constrained('offices');
+            $table->primary(['business_type_id', 'office_id']);
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -31,6 +28,6 @@ class CreateBranchesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('branches');
+        Schema::dropIfExists('business_type_office');
     }
 }

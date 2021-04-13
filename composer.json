@@ -24,7 +24,8 @@
     },
     "require": {
         "santigarcor/laratrust": "^6.3",
-        "mckenziearts/laravel-notify": "^2.1"
+        "yoeunes/notify": "^1.0",
+        "diglactic/laravel-breadcrumbs": "^6.1"
     },
     "require-dev": {
         "laravel/sail": "^1.0.1"

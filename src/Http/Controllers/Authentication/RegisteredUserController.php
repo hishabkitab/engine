@@ -35,16 +35,32 @@ class RegisteredUserController extends Controller
      */
     public function store(RegisterRequest $request)
     {
+        //register new user
 
-        Auth::login($user = User::create([
+        if($user = User::create([
             'name' => $request->name,
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-        ]));
+        ])) {
 
-        event(new Registered($user));
+            //set a confirmation msg
+            notify()->success(__('auth.register.success'), 'Authentication');
 
-        return redirect();
+            //send a user to login
+            Auth::login($user);
+
+            //trigger registered event [email verification]
+            event(new Registered($user));
+
+            //send to company config info
+            return redirect()->route('config.company');
+        }
+
+        //set a confirmation msg
+        notify()->success(__('auth.register.failed'), 'Authentication');
+
+        //send back to register page
+        return redirect()->route('config.company');
     }
 }

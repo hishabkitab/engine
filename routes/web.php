@@ -107,13 +107,17 @@ Route::prefix('authorization')->middleware('web')
 
 Route::prefix('configuration')->middleware(['web', 'auth'])
     ->group(function () {
+        Route::get('/', function () {
+            return redirect()->route('config.company');
+        })->name('config.index');
+
         Route::get('company', [CompanyController::class, 'create'])
             ->name('config.company');
 
         Route::post('company', [CompanyController::class, 'store']);
 
-        Route::resource('financial-accounts', CompanyController::class);
-        Route::resource('localizations', CompanyController::class);
+/*        Route::resource('financial-accounts', CompanyController::class);
+        Route::resource('localizations', CompanyController::class);*/
     });
 
 Route::get('/support', [SiteController::class, 'index'])->name('support');

@@ -73,7 +73,7 @@ return [
     |
     */
     'user_models' => [
-        'users' => HishabKitab\Engine\Models\Auth\User::class,
+        'users' => HishabKitab\Engine\Models\User::class,
     ],
 
     /*
@@ -88,14 +88,14 @@ return [
     */
     'models' => [
 
-        'role' => HishabKitab\Engine\Models\Auth\Role::class,
+        'role' => HishabKitab\Engine\Models\Role::class,
 
-        'permission' => HishabKitab\Engine\Models\Auth\Permission::class,
+        'permission' => HishabKitab\Engine\Models\Permission::class,
 
         /**
          * Will be used only if the teams functionality is enabled.
          */
-        'team' => HishabKitab\Engine\Models\Auth\Team::class,
+        'team' => HishabKitab\Engine\Models\Team::class,
     ],
 
     /*
@@ -213,7 +213,7 @@ return [
         | Please check the docs to see what you need to do in case you have the package already configured.
         |
         */
-        'enabled' => true,
+        'enabled' => false,
 
         /*
         |--------------------------------------------------------------------------
